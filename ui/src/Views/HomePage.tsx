@@ -12,22 +12,31 @@ export const HomePage: React.FC = () => {
     const dispatch:AppDispatch = useDispatch();
 
     const [listings, setListing] = useState<any>([]);
+    const [firstLoad, setFirstLoad] = useState<boolean>(false);
+ const getListing =() => {
+     if(firstLoad === false){
+         dispatch(getAllListings());
+         setListing(listingInfo.listing);
+         setFirstLoad(true);
+         console.log("function1" + firstLoad);
+         console.log("function2" + listings);
+         console.log("function3" + listingInfo.listing);
+     }
+ }
 
-// const getListing =() => {
-//     if(listings.length === 0){
-//         dispatch(getAllListings);
-//     }
-// }
-
-// getListing();
+    getListing();
 
     useEffect(() => {
-        if(listingInfo === undefined){
-            dispatch(getAllListings);
-        }
+        // if(listingInfo === undefined){
+        //     dispatch(getAllListings());
+        // }
+        setListing(listingInfo.listing);
         console.log(listingInfo)
-       setListing(listingInfo.listing);
-    },[listingInfo]);
+        console.log("effect1" + firstLoad);
+        console.log("effect2" + listings);
+        console.log("effect3" + listingInfo.listing);
+       
+    },[listingInfo, listings]);
 
 
     
