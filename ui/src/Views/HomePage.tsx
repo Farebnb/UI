@@ -4,6 +4,7 @@ import { AppDispatch, RootState } from "../Store";
 import { ListingCard } from "../Components/ListingCard";
 import { getAllListings } from "../Slices/ListingSlice";
 import { IListing } from "../Interfaces/IListing";
+import {Grid, GridItem, SimpleGrid, Stack} from '@chakra-ui/react';
 
 export const HomePage: React.FC = () => {
 
@@ -44,9 +45,12 @@ export const HomePage: React.FC = () => {
         <>
             <div className="home-body">
                <div className = "listing-div">
+              
+               <SimpleGrid columns = {5} spacing = {5} >
                 {listings ? listings.map((listing: { id: any; }) => {
                     return <ListingCard {...listing} key = {listing.id}/>
                 }): <h1> Loading... </h1>}
+    </SimpleGrid>
                </div>
             </div>
         </>

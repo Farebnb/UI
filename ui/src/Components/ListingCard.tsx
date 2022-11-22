@@ -3,8 +3,9 @@ import { IListing } from "../Interfaces/IListing";
 import { AppDispatch, RootState } from "../Store";
 
 import * as React from "react";
-import { Box, Center, Image, Flex, Badge, Text, propNames } from "@chakra-ui/react";
+import { Box, Center, Image, Flex, Badge, Text, propNames, HStack, Stack } from "@chakra-ui/react";
 import { MdStar, MdAccountCircle } from "react-icons/md";
+import { GridItem } from "@chakra-ui/react";
 
 
 
@@ -17,8 +18,10 @@ export const ListingCard: React.FC<any> = (prop: IListing) => {
 
     return(
 <>
-<Center h="100vh">
-      <Box p="5" maxW="320px" borderWidth="1px">
+
+
+     
+      <Box p="1" maxW="430px" borderWidth="1px">
         <Image borderRadius="md" src= {prop.image} />
         <Flex align="baseline" mt={2}>
           <Badge colorScheme="pink">{prop.type}</Badge>
@@ -37,17 +40,23 @@ export const ListingCard: React.FC<any> = (prop: IListing) => {
         </Text>
         <Text mt={2}>${prop.price}/night</Text>
         <Flex mt={2} align="center">
+        <Box as={MdAccountCircle} color="gray.400" />
+          <Text ml={1} fontSize="sm">
+            <b>Max Guests {prop.cap}</b> 
+          </Text>
+          </Flex>
+          <Flex mt={2} align="center">
           <Box as={MdStar} color="orange.400" />
           <Text ml={1} fontSize="sm">
             <b>{prop.rating}</b> 
           </Text>
-          <Box as={MdAccountCircle} color="gray.400" />
-          <Text ml={1} fontSize="sm">
-            <b>Max Guests {prop.cap}</b> 
-          </Text>
+       
         </Flex>
       </Box>
-    </Center>
+  
+     
+    
+
 </>
     )
 
