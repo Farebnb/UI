@@ -5,6 +5,7 @@ import { ListingCard } from "../Components/ListingCard";
 import { getAllListings } from "../Slices/ListingSlice";
 import { IListing } from "../Interfaces/IListing";
 import {Grid, GridItem, SimpleGrid, Stack} from '@chakra-ui/react';
+import Navbar from '../Components/Navbar'
 
 export const HomePage: React.FC = () => {
 
@@ -43,6 +44,7 @@ export const HomePage: React.FC = () => {
     
     return(
         <>
+        <Navbar>
             <div className="home-body">
                <div className = "listing-div">
               
@@ -53,6 +55,7 @@ export const HomePage: React.FC = () => {
     </SimpleGrid>
                </div>
             </div>
+            </Navbar>
         </>
     )
 }

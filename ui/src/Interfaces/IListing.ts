@@ -9,4 +9,6 @@ export interface IListing{
     guests: number,
     cap : number,
     rating: number
+    userId: number,
+    trending: boolean
 }

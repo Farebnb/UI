@@ -25,6 +25,7 @@ export const ListingCard: React.FC<any> = (prop: IListing) => {
         <Image borderRadius="md" src= {prop.image} />
         <Flex align="baseline" mt={2}>
           <Badge colorScheme="pink">{prop.type}</Badge>
+          {prop.trending?  <Badge colorScheme="green">Trending</Badge> : <></> }          
           <Text
             ml={2}
             textTransform="uppercase"
