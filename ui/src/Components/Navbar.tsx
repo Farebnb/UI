@@ -45,6 +45,7 @@ import houselogo from "../assets/pngwing.com.png";
 import { AnyAction } from "redux";
 import { useClickable } from "@chakra-ui/clickable";
 import { useNavigate } from "react-router-dom";
+import { falseListingView, toggleListingView } from "../Slices/ListingSlice";
 
 // interface LinkItemProps {
 //   name: string;
@@ -103,6 +104,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 
   const handleHome = () => {
     navigate("/");
+    falseListingView();
   };
 
   const handleTrending = () => {

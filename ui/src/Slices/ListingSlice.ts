@@ -5,12 +5,14 @@ import axios from 'axios'
 interface ListingState {
   loading: boolean,
   error: boolean,
-  listing?: IListing[]
+  listing?: IListing[],
+  listingView: boolean
 }
 
 const initialListingState: ListingState = {
   loading: false,
-  error: false
+  error: false,
+  listingView: false
 }
 
 
@@ -38,6 +40,15 @@ export const listingSlice = createSlice({
     },
     clearListing: (state) => {
       state.listing = undefined;
+    },
+    toggleListingView: (state) => {
+      state.listingView = !state.listingView;
+    },
+    trueListingView: (state) => {
+      state.listingView = true;
+    },
+    falseListingView: (state) => {
+      state.listingView = false;
     }
   },
   extraReducers: (builder) => {
@@ -58,6 +69,6 @@ export const listingSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { toggleError, clearListing } = listingSlice.actions
+export const { toggleError, clearListing, toggleListingView, trueListingView, falseListingView } = listingSlice.actions
 
 export default listingSlice.reducer
