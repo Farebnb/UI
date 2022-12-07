@@ -1,4 +1,6 @@
-export interface IListing{
+import { IDate } from "./IDate"
+
+export interface IListing extends IDate{
     id: number,
     title: string,
     address: string,

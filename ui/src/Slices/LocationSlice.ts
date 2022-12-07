@@ -13,7 +13,19 @@ const initialLocationState: LocationState = {
   error: false
 }
 
-
+export const getLocationById = createAsyncThunk(
+  'location/getById',
+  async (id:number,thunkAPI) => {
+      try{
+          const res = await axios.get(`http://localhost:8081/location/?id=${id}`);
+          console.log(res.data);
+          return res.data;
+      }catch(e){
+          console.log(e);
+      }
+      }
+  
+)
 
 export const locationSlice = createSlice({
   name: 'location',
@@ -27,7 +39,18 @@ export const locationSlice = createSlice({
     }
   },
   extraReducers: (builder) => {
-    //create board
+    builder.addCase(getLocationById.pending, (state, action)=>{
+      state.loading = true;
+  });
+  builder.addCase(getLocationById.fulfilled, (state, action)=> {
+      state.location = action.payload;
+      state.error = false;
+      state.loading = false;
+  });
+  builder.addCase(getLocationById.rejected,(state,action)=> {
+      state.error = true;
+      state.loading = false;
+  });
     
   }
 })
