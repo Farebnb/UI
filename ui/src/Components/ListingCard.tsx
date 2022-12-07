@@ -17,7 +17,7 @@ import {
 import { MdStar, MdAccountCircle } from "react-icons/md";
 import { GridItem } from "@chakra-ui/react";
 
-export const ListingCard: React.FC<any> = (prop: IListing) => {
+export const ListingCard: React.FC<any> = (prop) => {
   return (
     <>
       <Box
@@ -28,6 +28,7 @@ export const ListingCard: React.FC<any> = (prop: IListing) => {
         p="1"
         maxW="430px"
         borderWidth="1px"
+        onClick = {() => prop.clickHandled(prop)}
       >
         <Image borderRadius="md" src={prop.image} />
         <Flex align="baseline" mt={2}>

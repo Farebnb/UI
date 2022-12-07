@@ -44,12 +44,15 @@ export const HomePage: React.FC = () => {
     console.log(listingInfo.listingView);
   }, [listingInfo, listings]);
 
-  const handleClick = () => {
+  const handleClick = (listing:IListing) => {
     trueListingView();
     console.log("CLICKED");
+    console.log(listing);
   };
 
   console.log(listingInfo.listingView);
+
+
 
   return (
     <>
@@ -61,7 +64,7 @@ export const HomePage: React.FC = () => {
                 listings.map((listing: { id: any }) => {
                   return (
                     <ListingCard
-                      onClick={handleClick}
+                      clickHandled={handleClick}
                       {...listing}
                       key={listing.id}
                     />
