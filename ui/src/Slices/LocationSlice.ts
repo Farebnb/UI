@@ -5,7 +5,8 @@ import { ILocation } from '../Interfaces/ILocation'
 interface LocationState {
   loading: boolean,
   error: boolean,
-  location?: ILocation
+  location?: ILocation,
+  locationList?: ILocation[]
 }
 
 const initialLocationState: LocationState = {
@@ -18,6 +19,20 @@ export const getLocationById = createAsyncThunk(
   async (id:number,thunkAPI) => {
       try{
           const res = await axios.get(`http://localhost:8081/location/?id=${id}`);
+          console.log(res.data);
+          return res.data;
+      }catch(e){
+          console.log(e);
+      }
+      }
+  
+)
+
+export const getAllLocations = createAsyncThunk(
+  'location/all',
+  async (thunkAPI) => {
+      try{
+          const res = await axios.get(`http://localhost:8081/location/all`);
           console.log(res.data);
           return res.data;
       }catch(e){
@@ -51,6 +66,19 @@ export const locationSlice = createSlice({
       state.error = true;
       state.loading = false;
   });
+
+  builder.addCase(getAllLocations.pending, (state, action)=>{
+    state.loading = true;
+});
+builder.addCase(getAllLocations.fulfilled, (state, action)=> {
+    state.locationList = action.payload;
+    state.error = false;
+    state.loading = false;
+});
+builder.addCase(getAllLocations.rejected,(state,action)=> {
+    state.error = true;
+    state.loading = false;
+});
     
   }
 })

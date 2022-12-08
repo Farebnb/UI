@@ -11,6 +11,7 @@ import { IListing } from "../Interfaces/IListing";
 import { Grid, GridItem, SimpleGrid, Stack } from "@chakra-ui/react";
 import Navbar from "../Components/Navbar";
 import { ListingPage } from "../Components/ListingPage";
+import { getAllLocations, getLocationById } from "../Slices/LocationSlice";
 
 export const HomePage: React.FC = () => {
   const listingInfo = useSelector((state: RootState) => state.listing);
@@ -20,10 +21,12 @@ export const HomePage: React.FC = () => {
   const [listings, setListing] = useState<any>([]);
   const [firstLoad, setFirstLoad] = useState<boolean>(false);
   const [listingPage, setListingPage] = useState<IListing>();
+  const [check, setCheck] = useState<boolean>(true);
 
   const getListing = () => {
     if (firstLoad === false) {
       dispatch(getAllListings());
+      dispatch(getAllLocations());
       setListing(listingInfo.listing);
       setFirstLoad(true);
       console.log("function1" + firstLoad);
@@ -47,9 +50,10 @@ export const HomePage: React.FC = () => {
   }, [listingInfo, listings]);
 
     const handleClick = (listing:IListing) => {
+      
         setListingPage(listing);
         dispatch(trueListingView());
-    
+        
         console.log("truelisting" + listingInfo.listingView);
         console.log("CLICKED");
         console.log(listing);
