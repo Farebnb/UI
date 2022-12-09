@@ -6,19 +6,20 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRange } from 'react-date-range';
 import { ILocation } from "../Interfaces/ILocation";
-import { getAllLocations, getLocationById } from "../Slices/LocationSlice";
+import { getAllLocations, getLocationById} from "../Slices/LocationSlice";
 
 export const ListingPage: React.FC<any> = (prop) => {
   const locationInfo = useSelector((state: RootState) => state.location);
   const dispatch: AppDispatch = useDispatch();
-  const [location, setLocation] = useState<any>([]);
+  const [location, setLocation] = useState<any>();
+  const [check, setCheck] = useState<boolean>(true);
 
   useEffect(() => {
   //dispatch(getAllLocations());
-  setLocation(locationInfo.locationList);
-  console.log("1" + locationInfo.locationList?.country[1]);
+  setLocation(locationInfo.location);
+  console.log("1" + locationInfo.locationList);
   console.log("2" + location);
- 
+
   }, [locationInfo]);
  
   const [state, setState] = useState<any>([
@@ -29,6 +30,20 @@ export const ListingPage: React.FC<any> = (prop) => {
       }
     ]);
  
+
+    const getLocationId = () => {
+      if (check) {
+        dispatch(getLocationById(prop.locationId));
+        //dispatch(getAllLocations());
+        //setLocation(locationInfo.location);
+        setCheck(false);
+        console.log("function1" + check);
+        console.log("function2" + location);
+        console.log("function3" + locationInfo.location);
+      }
+    };
+
+    getLocationId();
   
   return (<>
 
@@ -42,7 +57,7 @@ export const ListingPage: React.FC<any> = (prop) => {
   <div className="name">{prop.name}</div>
   <div className="address">{prop.address}</div>
   <div className="type">{prop.type}</div>
-  <div className="location">{location.splice(0,1).city} {}  {location.splice(0,1).zip}</div>
+  <div className="location">{location.city} {location.zip}  {location.country}</div>
   <div className="image">{prop.image}</div>
   <div className="price">{prop.price}</div>
   <div className="cap">{prop.cap}</div>

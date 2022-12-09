@@ -21,7 +21,6 @@ export const HomePage: React.FC = () => {
   const [listings, setListing] = useState<any>([]);
   const [firstLoad, setFirstLoad] = useState<boolean>(false);
   const [listingPage, setListingPage] = useState<IListing>();
-  const [check, setCheck] = useState<boolean>(true);
 
   const getListing = () => {
     if (firstLoad === false) {
@@ -58,7 +57,6 @@ export const HomePage: React.FC = () => {
         console.log("CLICKED");
         console.log(listing);
     
-        console.log("Listing page " + listingPage);
     };
 
   console.log(listingInfo.listingView);
