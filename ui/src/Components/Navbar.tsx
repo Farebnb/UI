@@ -46,6 +46,8 @@ import { AnyAction } from "redux";
 import { useClickable } from "@chakra-ui/clickable";
 import { useNavigate } from "react-router-dom";
 import { falseListingView, toggleListingView } from "../Slices/ListingSlice";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../Store";
 
 // interface LinkItemProps {
 //   name: string;
@@ -101,10 +103,11 @@ interface SidebarProps extends BoxProps {
 
 const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
   const navigate = useNavigate();
+  const dispatch: AppDispatch = useDispatch();
 
   const handleHome = () => {
     navigate("/");
-    falseListingView();
+    dispatch(falseListingView());
   };
 
   const handleTrending = () => {
