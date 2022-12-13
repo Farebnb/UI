@@ -112,6 +112,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 
   const handleTrending = () => {
     navigate("/trending");
+    dispatch(falseListingView());
   };
 
   const handleRegion = () => {
