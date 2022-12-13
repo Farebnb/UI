@@ -48,6 +48,12 @@ import { useNavigate } from "react-router-dom";
 import { falseListingView, toggleListingView } from "../Slices/ListingSlice";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../Store";
+import { ImHome } from "react-icons/im";
+import {FaHotel } from "react-icons/fa";
+// import { MdOutlineApartment, MdVilla } from "react-icons/md";
+import { GiCastle, GiForestCamp } from "react-icons/gi";
+
+
 
 // interface LinkItemProps {
 //   name: string;
@@ -230,19 +236,59 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       bg={useColorModeValue("white", "gray.900")}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
-      justifyContent={{ base: "space-between", md: "flex-end" }}
+      justifyContent={{ base: "space-between", md: "space-between" }}
       {...rest}
     >
-      <Input placeholder="Basic usage" />
+      {/* <Input placeholder="Basic usage" /> */}
 
-      <HStack spacing={{ base: "0", md: "6" }}>
+      <HStack spacing={{ base: "0", md: "flex-end" }}>
+        
+        <HStack spacing = {{base: "0", md: " center"}}>
         <IconButton
           size="lg"
           variant="ghost"
           aria-label="open menu"
-          icon={<FiSearch />}
-        />
-        <Flex alignItems={"center"}>
+          icon={<ImHome/>}
+        /> 
+
+        <IconButton
+          size="lg"
+          variant="ghost"
+          aria-label="open menu"
+          icon={<FaHotel/>}
+        /> 
+
+      {/* <IconButton
+          size="lg"
+          variant="ghost"
+          aria-label="open menu"
+          icon={<MdOutlineApartment/>}
+        /> 
+
+<IconButton
+          size="lg"
+          variant="ghost"
+          aria-label="open menu"
+          icon={<MdVilla/>}
+        />  */}
+
+<IconButton
+          size="lg"
+          variant="ghost"
+          aria-label="open menu"
+          icon={<GiCastle/>}
+        /> 
+
+<IconButton
+          size="lg"
+          variant="ghost"
+          aria-label="open menu"
+          icon={<GiForestCamp/>}
+        /> 
+
+</HStack>
+
+        <Flex alignItems={"flex-end"}>
           <Menu>
             <MenuButton
               py={2}
