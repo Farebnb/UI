@@ -48,43 +48,42 @@ export const HomePage: React.FC = () => {
     console.log(listingInfo.listingView);
   }, [listingInfo, listings]);
 
-    const handleClick = (listing:IListing) => {
-      
-        setListingPage(listing);
-        dispatch(trueListingView());
-        
-        console.log("truelisting" + listingInfo.listingView);
-        console.log("CLICKED");
-        console.log(listing);
-    
-    };
+  const handleClick = (listing: IListing) => {
+    setListingPage(listing);
+    dispatch(trueListingView());
+
+    console.log("truelisting" + listingInfo.listingView);
+    console.log("CLICKED");
+    console.log(listing);
+  };
 
   console.log(listingInfo.listingView);
-
-
 
   return (
     <>
       <Navbar>
         <div className="home-body">
-           {listingInfo.listingView? <ListingPage {...listingPage}/> : (<div className="listing-div">
-            <SimpleGrid columns={5} spacing={5}>
-              {listings ? (
-                listings.map((listing: { id: any }) => {
-                  return (
-                    <ListingCard
-                      clickHandled={handleClick}
-                      {...listing}
-                      key={listing.id}
-                    />
-                  );
-                })
-              ) : (
-                <h1> Loading... </h1>
-              )}
-            </SimpleGrid>
-          </div>) }
-          
+          {listingInfo.listingView ? (
+            <ListingPage {...listingPage} />
+          ) : (
+            <div className="listing-div">
+              <SimpleGrid columns={5} spacing={5}>
+                {listings ? (
+                  listings.map((listing: { id: any }) => {
+                    return (
+                      <ListingCard
+                        clickHandled={handleClick}
+                        {...listing}
+                        key={listing.id}
+                      />
+                    );
+                  })
+                ) : (
+                  <h1> Loading... </h1>
+                )}
+              </SimpleGrid>
+            </div>
+          )}
         </div>
       </Navbar>
     </>
