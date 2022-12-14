@@ -236,12 +236,12 @@ const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
       bg={useColorModeValue("white", "gray.900")}
       borderBottomWidth="1px"
       borderBottomColor={useColorModeValue("gray.200", "gray.700")}
-      justifyContent={{ base: "space-between", md: "space-between" }}
+      justifyContent={{ base: "space-between", md: "end" }}
       {...rest}
     >
       {/* <Input placeholder="Basic usage" /> */}
 
-      <HStack spacing={{ base: "0", md: "flex-end" }}>
+      <HStack spacing={["10px", "200px"]}>
         
         <HStack spacing = {{base: "0", md: " center"}}>
         <IconButton
