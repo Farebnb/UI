@@ -6,7 +6,8 @@ interface ListingState {
   loading: boolean,
   error: boolean,
   listing?: IListing[],
-  listingView: boolean
+  listingView: boolean,
+  currentType?: string
 }
 
 const initialListingState: ListingState = {
@@ -49,6 +50,18 @@ export const listingSlice = createSlice({
     },
     falseListingView: (state) => {
       state.listingView = false;
+    },
+    setHomeType: (state) => {
+      state.currentType = "Home";
+    },
+    setHotelType: (state) => {
+      state.currentType = "Hotel";
+    },
+    setCastleType: (state) => {
+      state.currentType = "Castle";
+    },
+    setCottageType: (state) => {
+      state.currentType = "Cottage";
     }
   },
   extraReducers: (builder) => {
@@ -69,6 +82,6 @@ export const listingSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { toggleError, clearListing, toggleListingView, trueListingView, falseListingView } = listingSlice.actions
+export const { toggleError, clearListing, toggleListingView, trueListingView, falseListingView, setHomeType, setHotelType, setCastleType, setCottageType } = listingSlice.actions
 
 export default listingSlice.reducer
