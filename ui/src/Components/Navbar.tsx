@@ -54,6 +54,7 @@ import {
   setHomeType,
   setHotelType,
   toggleListingView,
+  trueListingView,
 } from "../Slices/ListingSlice";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../Store";
@@ -271,21 +272,31 @@ interface MobileProps extends FlexProps {
 }
 const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
   const dispatch: AppDispatch = useDispatch();
-
+  const navigate = useNavigate();
   const handleHouse = () => {
     dispatch(setHomeType());
+    dispatch(falseListingView());
+    navigate("/type");
+   
   };
 
   const handleHotel = () => {
     dispatch(setHotelType());
+    dispatch(falseListingView());
+    navigate("/type");
+    
   };
 
   const handleCastle = () => {
     dispatch(setCastleType());
+    dispatch(falseListingView());
+    navigate("/type");
   };
 
   const handleCottage = () => {
     dispatch(setCottageType());
+    dispatch(falseListingView());
+    navigate("/type");
   };
 
   return (

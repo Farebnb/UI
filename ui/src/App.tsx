@@ -14,6 +14,7 @@ import { Logo } from "./Logo";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { HomePage } from "./Views/HomePage";
 import { Trending } from "./Views/Trending";
+import { Home } from "./Views/Home";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="*" element={<Navigate to="/homepage" replace />} />
           <Route path="/homepage" element={<HomePage />} />
           <Route path="/trending" element={<Trending />} />
+          <Route path="/type" element={<Home/>} />
         </Routes>
       </BrowserRouter>
     </ChakraProvider>
