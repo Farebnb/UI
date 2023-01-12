@@ -20,7 +20,7 @@ export const getByUserId = createAsyncThunk(
     'favourite/userid',
     async (userId:number, thunkAPI) => {
         try{
-            const res = await axios.get(`http://localhost:8084/favourite/user?userId=${userId}`);
+            const res = await axios.get(`http://localhost:8080/favourite/user?userId=${userId}`);
             console.log(res.data);
             return res.data;
         }catch(e){
@@ -34,7 +34,7 @@ export const getByListingId = createAsyncThunk(
     'favourite/listingid',
     async (listingId:number, thunkAPI) => {
         try{
-            const res = await axios.get(`http://localhost:8084/favourite/listing?listingId=${listingId}`);
+            const res = await axios.get(`http://localhost:8080/favourite/listing?listingId=${listingId}`);
             console.log(res.data);
             return res.data;
         }catch(e){
@@ -48,7 +48,7 @@ export const createFavourite = createAsyncThunk(
     'favourite/listingid',
     async (fav:IFavourite, thunkAPI) => {
         try{
-            const res = await axios.post(`http://localhost:8084/favourite/user?userId=${fav.userId}&listingId=${fav.listingId}`);
+            const res = await axios.post(`http://localhost:8080/favourite/user?userId=${fav.userId}&listingId=${fav.listingId}`);
             console.log(res.data);
             return res.data;
         }catch(e){
